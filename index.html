@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>
+         Four In A Row
+      </title>
+      <link rel="stylesheet" type="text/css" href="css/stylesheet.css">
+      <link rel='shortcut icon' type='image/x-icon' href='/resources/favicon.ico' />
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+   </head>
+   <body>
+      <div id="app">
+         <div class="text">
+            <span class="turn-text">
+               <span class="cell cell-prev" :class="[(currentPlayer === states.PLAYER1 ? 'color-2' : currentPlayer === states.PLAYER2 ? 'color-3' : '')]"></span> <span v-if="gameover">Won!</span>
+            </span>
+         </div>
+         <ul class="grid">
+            <li class="row-container" v-for="(row, rowIndex) in grid">
+               <ul class="row">
+                  <li class="cell-container" v-for="(cell, colIndex) in row">
+                     <div class="cell" @click="cellClicked(rowIndex, colIndex)" :class="[(cell !== states.NONE ? 'occupied' : ''), (cell === states.PLAYER1 ? 'color-2' : cell === states.PLAYER2 ? 'color-3' : '')]"></div>
+                  </li>
+               </ul>
+            </li>
+         </ul>
+         <button type="button" class="btn" @click="initGame()"><span>Restart</span></button>
+      </div>
+      <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+      <script src="js/index.js"></script>
+   </body>
+</html>
