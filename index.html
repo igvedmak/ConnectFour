@@ -9,21 +9,27 @@
       <meta name="viewport" content="width=device-width, initial-scale=1">
    </head>
    <body>
+      <!--Vue instance-->
       <div id="app">
          <div class="text">
             <span class="turn-text">
-               <span class="cell cell-prev" :class="[(currentPlayer === states.PLAYER1 ? 'color-2' : currentPlayer === states.PLAYER2 ? 'color-3' : '')]"></span> <span v-if="gameover">Won!</span>
+                <!--Displaying the current color player-->
+               <span class="cell cell-prev" :class="[(currentPlayer === states.PLAYER1 ? 'color-2' : currentPlayer === states.PLAYER2 ? 'color-3' : '')]"></span> 
+               <span v-if="gameover">Won!</span>
             </span>
          </div>
+         <!--Creating the board game-->
          <ul class="grid">
             <li class="row-container" v-for="(row, rowIndex) in grid">
                <ul class="row">
                   <li class="cell-container" v-for="(cell, colIndex) in row">
+                     <!--The cell color is obtained by clicking on a current player-->
                      <div class="cell" @click="cellClicked(rowIndex, colIndex)" :class="[(cell !== states.NONE ? 'occupied' : ''), (cell === states.PLAYER1 ? 'color-2' : cell === states.PLAYER2 ? 'color-3' : '')]"></div>
                   </li>
                </ul>
             </li>
          </ul>
+         <!--Restart the game-->
          <button type="button" class="btn" @click="initGame()"><span>Restart</span></button>
       </div>
       <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
