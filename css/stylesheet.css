@@ -1,11 +1,11 @@
 @import url('https://fonts.googleapis.com/css?family=Noto+Sans:400,400i,700,700i&display=swap');
-
+/*Attributes for all elements*/
 * {
    margin: 0;
    padding: 0;
    font-family: 'Noto Sans', sans-serif;
 }
-
+/*Attributes for vue instance*/
 #app {
    display: flex;
    flex-direction: column;
@@ -24,6 +24,7 @@ ul {
    list-style-type: none;
    
 }
+/*Attributes for the game board*/
 .grid {
    display: flex;
    flex-direction: column;
@@ -34,7 +35,7 @@ ul {
    display: flex;
    flex-direction: row;
 }
-
+/*Attributes for all cells*/
 .cell {
    height: 3em;
    width: 3em;
@@ -43,7 +44,7 @@ ul {
    outline: none;
    -webkit-tap-highlight-color: transparent;
 }
-
+/*Attributes for all cells before some player clicked on it*/
 .cell::before {
    content: '';
    width: 100%;
@@ -60,11 +61,11 @@ ul {
 .cell.color-3::before {
    background-color: #000063;
 }
-
+/*Attributes for all cells which not clicked on it and not the icon which player's turn*/
 .cell:not(.occupied):not(.cell-prev):hover::before {
    background-color: #7E7E7E;
 }
-
+/*Attributes for the button*/
 .btn {
    display: inline-block;
    margin: 0.5em;
@@ -122,7 +123,7 @@ ul {
    padding-top: 120%;
    transition: width .3s ease-out, padding-top .3s ease-out;
 }
-
+/*Attributes for cell showing which player's turn*/
 .cell-prev {
    display: inline-block;
    width: 1.5em;
